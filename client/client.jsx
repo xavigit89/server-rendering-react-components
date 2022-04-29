@@ -2,4 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 
-ReactDOM.render(<App />, document.getElementById("Container"));
+function render() {
+  ReactDOM.hydrate(<App />, document.getElementById("Container"));
+}
+
+render();
