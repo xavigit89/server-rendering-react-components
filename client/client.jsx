@@ -12,6 +12,18 @@ fetch("http://localhost:7777/data")
     render();
   });
 
+function handleModifyAnswerVotes(answerId, increment) {
+  state.answers = state.answers.map((answer) =>
+    answer.answerId === answerId
+      ? { ...answer, upvotes: answer.upvotes + increment }
+      : answer
+  );
+  render();
+}
+
 function render() {
-  //ReactDOM.hydrate(<App />, document.getElementById("Container"));
+  ReactDOM.hydrate(
+    <App {...state} handleModifyAnswerVotes={handleModifyAnswerVotes} />,
+    document.getElementById("Container")
+  );
 }
